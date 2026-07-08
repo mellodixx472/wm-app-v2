@@ -21,7 +21,7 @@ export function Scorers({ matches }: { matches: Match[] }) {
             <th className="team-col">Spieler</th>
             <th className="team-col">Team</th>
             <th>Tore</th>
-            <th>davon Elfmeter</th>
+            <th title="davon Elfmeter">Elfm.</th>
           </tr>
         </thead>
         <tbody>

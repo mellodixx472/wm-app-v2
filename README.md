@@ -8,6 +8,14 @@ Eine Web-App, die die FIFA Fussball-Weltmeisterschaft 2026 (USA, Kanada & Mexiko
 - **K.o.-Runde** – Turnierbaum vom Sechzehntelfinale bis zum Finale inkl. Spiel um Platz 3
 - **Torschützen** – Torschützenliste des Turniers (ohne Eigentore, Elfmeter ausgewiesen)
 
+## Mobile / PWA
+
+Die App ist für Smartphones optimiert (Bottom-Navigation, gestapelter
+K.o.-Baum, kompakte Tabellen) und als **Progressive Web App** installierbar:
+über „Zum Home-Bildschirm hinzufügen" landet sie als eigenständige App auf
+dem Gerät. Ein Service Worker (`public/sw.js`) cached App-Shell und den
+letzten Datenstand, sodass sie auch offline funktioniert.
+
 ## Daten
 
 Die App lädt beim Start die aktuellen Turnierdaten von

@@ -8,3 +8,9 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </StrictMode>,
 );
+
+// Offline-Fähigkeit nur im Produktions-Build – im Dev-Modus würde der
+// Cache frisch transformierte Module verdecken.
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js").catch(() => {});
+}

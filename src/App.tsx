@@ -9,14 +9,14 @@ import { Bracket } from "./components/Bracket";
 import { Scorers } from "./components/Scorers";
 
 const TABS = [
-  "Übersicht",
-  "Gruppen",
-  "Spiele",
-  "K.o.-Runde",
-  "Torschützen",
+  { label: "Übersicht", icon: "🏟️" },
+  { label: "Gruppen", icon: "📊" },
+  { label: "Spiele", icon: "⚽" },
+  { label: "K.o.-Runde", icon: "🏆" },
+  { label: "Torschützen", icon: "🥇" },
 ] as const;
 
-type Tab = (typeof TABS)[number];
+type Tab = (typeof TABS)[number]["label"];
 
 export default function App() {
   const [tournament, setTournament] = useState<Tournament | null>(null);
@@ -67,11 +67,14 @@ export default function App() {
       <nav className="tabs" aria-label="Ansichten">
         {TABS.map((t) => (
           <button
-            key={t}
-            className={t === tab ? "active" : undefined}
-            onClick={() => setTab(t)}
+            key={t.label}
+            className={t.label === tab ? "active" : undefined}
+            onClick={() => setTab(t.label)}
           >
-            {t}
+            <span className="tab-icon" aria-hidden="true">
+              {t.icon}
+            </span>
+            <span className="tab-label">{t.label}</span>
           </button>
         ))}
       </nav>

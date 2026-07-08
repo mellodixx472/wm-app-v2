@@ -20,9 +20,9 @@ export function Groups({ matches }: { matches: Match[] }) {
                 <th className="pos">#</th>
                 <th className="team-col">Team</th>
                 <th>Sp</th>
-                <th>S</th>
-                <th>U</th>
-                <th>N</th>
+                <th className="wide-only">S</th>
+                <th className="wide-only">U</th>
+                <th className="wide-only">N</th>
                 <th>Tore</th>
                 <th>+/−</th>
                 <th>Pkt</th>
@@ -37,9 +37,9 @@ export function Groups({ matches }: { matches: Match[] }) {
                     {teamName(row.team)}
                   </td>
                   <td>{row.played}</td>
-                  <td>{row.won}</td>
-                  <td>{row.drawn}</td>
-                  <td>{row.lost}</td>
+                  <td className="wide-only">{row.won}</td>
+                  <td className="wide-only">{row.drawn}</td>
+                  <td className="wide-only">{row.lost}</td>
                   <td>
                     {row.goalsFor}:{row.goalsAgainst}
                   </td>
