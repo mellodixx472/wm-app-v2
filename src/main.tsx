@@ -12,5 +12,7 @@ createRoot(document.getElementById("root")!).render(
 // Offline-Fähigkeit nur im Produktions-Build – im Dev-Modus würde der
 // Cache frisch transformierte Module verdecken.
 if (import.meta.env.PROD && "serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js").catch(() => {});
+  navigator.serviceWorker
+    .register(import.meta.env.BASE_URL + "sw.js")
+    .catch(() => {});
 }
