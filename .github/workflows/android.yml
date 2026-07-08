@@ -1,0 +1,57 @@
+name: Android-APK bauen
+
+on:
+  push:
+    branches:
+      - main
+      - claude/fifa26-worldcup-summary-app-5t1nbz
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Web-Assets in Android-Projekt synchronisieren
+        run: npx cap sync android
+      - name: Debug-APK bauen
+        run: ./gradlew assembleDebug
+        working-directory: android
+      - name: APK umbenennen
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk wm2026.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wm2026-apk
+          path: wm2026.apk
+      - name: Als Release veröffentlichen (rollierender Tag "app")
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app
+          name: WM 2026 App (Android)
+          body: |
+            Herunterladbare Android-App der WM-2026-Zusammenfassung.
+
+            **Installation:** `wm2026.apk` auf dem Android-Gerät herunterladen und öffnen.
+            Beim ersten Mal muss die Installation aus unbekannten Quellen erlaubt werden
+            (die APK ist mit einem Debug-Schlüssel signiert, nicht über den Play Store).
+
+            Dieses Release wird bei jedem Push automatisch mit der neuesten APK aktualisiert.
+          files: wm2026.apk

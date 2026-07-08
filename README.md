@@ -37,6 +37,17 @@ npm run build    # Produktions-Build nach dist/
 
 Stack: React 18, TypeScript, Vite, Vitest – keine weiteren Laufzeit-Abhängigkeiten.
 
+## Android-App (APK)
+
+Die neueste herunterladbare Android-App liegt als GitHub-Release bereit:
+<https://github.com/mellodixx472/wm-app-v2/releases/tag/app>
+
+Der Workflow `.github/workflows/android.yml` verpackt die Web-App per
+[Capacitor](https://capacitorjs.com/) (Projekt unter `android/`, Web-Assets
+offline eingebettet) und aktualisiert das Release bei jedem Push. Die APK ist
+Debug-signiert – bei der Installation muss einmalig „unbekannte Quellen"
+erlaubt werden. Für iOS steht die PWA-Installation zur Verfügung (siehe oben).
+
 ## Deployment
 
 Die App wird automatisch auf **GitHub Pages** veröffentlicht:
