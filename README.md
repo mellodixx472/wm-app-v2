@@ -36,3 +36,14 @@ npm run build    # Produktions-Build nach dist/
 ```
 
 Stack: React 18, TypeScript, Vite, Vitest – keine weiteren Laufzeit-Abhängigkeiten.
+
+## Deployment
+
+Die App wird automatisch auf **GitHub Pages** veröffentlicht:
+<https://mellodixx472.github.io/wm-app-v2/>
+
+Der Workflow `.github/workflows/deploy.yml` baut bei jedem Push (inkl. Tests)
+und pusht das Ergebnis auf den `gh-pages`-Branch, von dem GitHub Pages
+ausliefert. Dank `base: "./"` in der Vite-Konfiguration funktioniert der
+Build unter dem Pages-Unterpfad; Manifest, Icons und Service Worker nutzen
+dafür relative Pfade.
