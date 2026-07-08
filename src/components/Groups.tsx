@@ -1,6 +1,7 @@
 import type { Match } from "../types";
 import { computeStandings } from "../lib/standings";
-import { groupName, teamFlag, teamName } from "../lib/i18n";
+import { groupName } from "../lib/i18n";
+import { TeamLink } from "./TeamLink";
 
 export function Groups({ matches }: { matches: Match[] }) {
   const standings = computeStandings(matches);
@@ -33,8 +34,7 @@ export function Groups({ matches }: { matches: Match[] }) {
                 <tr key={row.team} className={i < 2 ? "qualified" : undefined}>
                   <td className="pos">{i + 1}</td>
                   <td className="team-col">
-                    <span className="flag">{teamFlag(row.team)}</span>{" "}
-                    {teamName(row.team)}
+                    <TeamLink team={row.team} />
                   </td>
                   <td>{row.played}</td>
                   <td className="wide-only">{row.won}</td>

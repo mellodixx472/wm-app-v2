@@ -1,26 +1,8 @@
-import type { Goal, Match } from "../types";
+import type { Match } from "../types";
 import { finalScore } from "../lib/knockout";
-import {
-  formatMatchDateTime,
-  groupName,
-  roundName,
-  teamFlag,
-  teamName,
-} from "../lib/i18n";
-
-function GoalList({ goals }: { goals: Goal[] }) {
-  return (
-    <ul className="goal-list">
-      {goals.map((goal, i) => (
-        <li key={i}>
-          {goal.minute}&prime; {goal.name}
-          {goal.penalty && " (Elfmeter)"}
-          {goal.owngoal && " (Eigentor)"}
-        </li>
-      ))}
-    </ul>
-  );
-}
+import { formatMatchDateTime, groupName, roundName } from "../lib/i18n";
+import { TeamLink } from "./TeamLink";
+import { Timeline } from "./Timeline";
 
 export function MatchCard({ match }: { match: Match }) {
   const score = match.score;
@@ -42,7 +24,7 @@ export function MatchCard({ match }: { match: Match }) {
       </div>
       <div className="match-line">
         <span className="match-team home">
-          {teamName(match.team1)} <span className="flag">{teamFlag(match.team1)}</span>
+          <TeamLink team={match.team1} flagLast />
         </span>
         {ft ? (
           <span className="match-score">
@@ -59,16 +41,13 @@ export function MatchCard({ match }: { match: Match }) {
           <span className="match-score upcoming">–:–</span>
         )}
         <span className="match-team away">
-          <span className="flag">{teamFlag(match.team2)}</span> {teamName(match.team2)}
+          <TeamLink team={match.team2} />
         </span>
       </div>
-      {hasGoals && (
+      {(hasGoals || score?.p) && (
         <details className="match-goals">
-          <summary>Torschützen</summary>
-          <div className="goal-columns">
-            <GoalList goals={match.goals1 ?? []} />
-            <GoalList goals={match.goals2 ?? []} />
-          </div>
+          <summary>Spielverlauf</summary>
+          <Timeline match={match} />
         </details>
       )}
     </article>

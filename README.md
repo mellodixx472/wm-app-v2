@@ -2,11 +2,19 @@
 
 Eine Web-App, die die FIFA Fussball-Weltmeisterschaft 2026 (USA, Kanada & Mexiko) zusammenfasst:
 
-- **Übersicht** – Turnierstatus, letzte Ergebnisse, nächste Spiele, Kurzstatistiken
+- **Übersicht** – Live-Countdown zum nächsten Anpfiff, Favoriten-Team, letzte Ergebnisse, nächste Spiele, Kurzstatistiken
 - **Gruppen** – berechnete Tabellen aller 12 Gruppen
-- **Spiele** – alle 104 Partien mit Torschützen, filterbar nach Runde, Gruppe und Team
+- **Spiele** – alle 104 Partien mit Tor-Timeline (Spielverlauf), filterbar nach Runde, Gruppe und Team
 - **K.o.-Runde** – Turnierbaum vom Sechzehntelfinale bis zum Finale inkl. Spiel um Platz 3
 - **Torschützen** – Torschützenliste des Turniers (ohne Eigentore, Elfmeter ausgewiesen)
+- **Statistik** – Turnier-Rekorde: torreichste Spiele, Tore je Phase, Eigentore, Elfmeterschießen, Spielorte
+- **Tipps** – lokales Tippspiel: Ergebnisse tippen, automatische Auswertung (3/2/1 Punkte)
+- **Historie** – Ehrentafel aller Weltmeister seit 1930 und Rekord-Weltmeister
+- **Team-Seiten** – Klick auf einen Teamnamen öffnet Turnierweg, Bilanz und Torschützen des Teams; ein Team lässt sich als Favorit markieren
+
+Dazu: teilbare Links für jede Ansicht (`#gruppen`, `#team/Germany`, …), Teilen-Button,
+Hell-/Dunkel-Design (folgt initial dem System), automatische Datenaktualisierung
+alle 5 Minuten sowie beim Zurückkehren in die App.
 
 ## Mobile / PWA
 

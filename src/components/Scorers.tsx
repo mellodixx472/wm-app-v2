@@ -1,6 +1,6 @@
 import type { Match } from "../types";
 import { computeScorers } from "../lib/scorers";
-import { teamFlag, teamName } from "../lib/i18n";
+import { TeamLink } from "./TeamLink";
 
 const TOP_N = 25;
 
@@ -32,8 +32,7 @@ export function Scorers({ matches }: { matches: Match[] }) {
               </td>
               <td className="team-col">{row.name}</td>
               <td className="team-col">
-                <span className="flag">{teamFlag(row.team)}</span>{" "}
-                {teamName(row.team)}
+                <TeamLink team={row.team} />
               </td>
               <td className="points">{row.goals}</td>
               <td>{row.penalties || "–"}</td>
